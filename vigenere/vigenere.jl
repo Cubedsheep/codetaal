@@ -1,27 +1,7 @@
 # This file contains functions related to the vigenere cipher
 
 # import modules
-
-# function to add two characters. only textual characters can be added
-function add_chars(char1::Char, char2::Char)
-    """
-    adds the two characters together if they are both alfabethical.
-        The capitalisation of the first character is kept.
-        If one of the characters is not alfabethical, the first character
-        is returned.
-    """
-    # initialise the result
-    result = char1
-    # add them together if they are alfabethical
-    if isletter(char1) & isletter(char2)
-        letter_num = ((Int(lowercase(char1))-Int('a')) + (Int(lowercase(char2))-Int('a'))) % 26;
-        if islowercase(char1)
-            result = 'a' + letter_num;
-        else result = 'A' + letter_num;
-        end
-    end
-    return result
-end
+include("../caesar/caesar.jl") # we need the add_chars function
 
 # function to encrypt a text using the vigenere cipher
 function vigenere_encrypt(text::String, key::String)
